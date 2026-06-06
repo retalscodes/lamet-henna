@@ -13,20 +13,20 @@ const dateInput = document.getElementById('f-date');
 if (dateInput) {
   const today = new Date().toISOString().split('T')[0];
   dateInput.min = today;
+  dateInput.addEventListener('change', onDateChange);
+}
 
-  // Block Fridays via input event
-  dateInput.addEventListener('change', () => {
-    const d = new Date(dateInput.value);
-    // getDay() with UTC: Friday = 5 in JS (0=Sun)
-    const day = d.getUTCDay();
-    if (day === 5) {
-      dateInput.value = '';
-      showSlotsMsg(i18n[currentLang].book_friday_note);
-      clearSlots();
-      return;
-    }
-    loadSlots(dateInput.value);
-  });
+let slotsAbortController = null;
+
+function onDateChange() {
+  const d = new Date(dateInput.value);
+  if (d.getUTCDay() === 5) { // Friday
+    dateInput.value = '';
+    showSlotsMsg(i18n[currentLang].book_friday_note);
+    clearSlots();
+    return;
+  }
+  loadSlots(dateInput.value);
 }
 
 function showSlotsMsg(msg) {
@@ -42,11 +42,17 @@ function clearSlots() {
 }
 
 async function loadSlots(date) {
+  // Cancel any in-flight request
+  if (slotsAbortController) slotsAbortController.abort();
+  slotsAbortController = new AbortController();
+
   showSlotsMsg(i18n[currentLang].book_loading_slots);
   clearSlots();
 
   try {
-    const res = await fetch(`/.netlify/functions/get-slots?date=${date}`);
+    const res = await fetch(`/.netlify/functions/get-slots?date=${date}`, {
+      signal: slotsAbortController.signal,
+    });
     const { slots } = await res.json();
 
     const grid = document.getElementById('slots-grid');
@@ -58,6 +64,8 @@ async function loadSlots(date) {
     }
 
     msg.style.display = 'none';
+    // Clear again just before rendering to be safe
+    grid.innerHTML = '';
     slots.forEach(slot => {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -71,7 +79,8 @@ async function loadSlots(date) {
       btn.addEventListener('click', () => selectSlot(btn, slot.time));
       grid.appendChild(btn);
     });
-  } catch {
+  } catch (err) {
+    if (err.name === 'AbortError') return; // silently ignore cancelled requests
     showSlotsMsg(i18n[currentLang].book_no_slots);
   }
 }
@@ -93,13 +102,17 @@ document.getElementById('booking-form')?.addEventListener('submit', async (e) =>
   btn.disabled = true;
   btn.textContent = i18n[currentLang].book_submitting;
 
+  const rawTime = document.getElementById('f-time').value;
+  // Normalize to HH:MM:SS for Postgres TIME type
+  const time = rawTime.length === 5 ? rawTime + ':00' : rawTime;
+
   const payload = {
     name:    document.getElementById('f-name').value.trim(),
     phone:   document.getElementById('f-phone').value.trim(),
     email:   document.getElementById('f-email').value.trim(),
     service: document.getElementById('f-service').value,
     date:    document.getElementById('f-date').value,
-    time:    document.getElementById('f-time').value,
+    time,
     notes:   document.getElementById('f-notes').value.trim(),
   };
 
@@ -112,21 +125,18 @@ document.getElementById('booking-form')?.addEventListener('submit', async (e) =>
 
     if (!res.ok) throw new Error();
 
-    // Show success
     document.getElementById('booking-form').classList.add('hidden');
-    const success = document.getElementById('booking-success');
-    success.classList.remove('hidden');
+    document.getElementById('booking-success').classList.remove('hidden');
 
-    // Build WhatsApp message
     const svcMap = { henna: 'حنة', events: 'تنظيم فعاليات', sedr: 'سدر وحنة', other: 'خدمات أخرى' };
-    const msg = encodeURIComponent(
+    const waMsg = encodeURIComponent(
       `مرحباً، اسمي ${payload.name}، أودّ تأكيد حجزي:\n` +
       `الخدمة: ${svcMap[payload.service] || payload.service}\n` +
       `التاريخ: ${payload.date}\n` +
-      `الوقت: ${payload.time}`
+      `الوقت: ${rawTime}`
     );
     const waLink = document.getElementById('success-whatsapp');
-    if (waLink) waLink.href = `https://wa.me/962790932333?text=${msg}`;
+    if (waLink) waLink.href = `https://wa.me/962790932333?text=${waMsg}`;
 
   } catch {
     btn.disabled = false;
@@ -145,17 +155,10 @@ function validate() {
     { id: 'f-time',    err: 'err-time',    check: v => v !== '' },
   ];
   fields.forEach(({ id, err, check }) => {
-    const el  = document.getElementById(id);
+    const el    = document.getElementById(id);
     const errEl = document.getElementById(err);
-    if (!check(el?.value || '')) {
-      errEl?.classList.add('show');
-      ok = false;
-    } else {
-      errEl?.classList.remove('show');
-    }
+    if (!check(el?.value || '')) { errEl?.classList.add('show'); ok = false; }
+    else errEl?.classList.remove('show');
   });
   return ok;
 }
-
-// Re-translate slot message on lang change
-const origApplyLang = window.applyLang;

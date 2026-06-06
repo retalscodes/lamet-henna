@@ -35,13 +35,16 @@ exports.handler = async (event) => {
     return { statusCode: 409, body: JSON.stringify({ error: 'Slot already booked' }) };
   }
 
+  // Normalize time to HH:MM:SS for Postgres TIME type
+  const normalizedTime = time.length === 5 ? time + ':00' : time;
+
   const { error } = await supabase.from('bookings').insert([{
     customer_name:  name,
     customer_phone: phone,
     customer_email: email || null,
     service,
     date,
-    time,
+    time: normalizedTime,
     notes: notes || null,
     status: 'pending',
   }]);

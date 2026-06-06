@@ -11,11 +11,9 @@ async function loadGallery() {
     const { images } = await res.json();
 
     if (!images || images.length === 0) {
-      // Keep the single placeholder but update text
-      if (placeholder) {
-        placeholder.querySelector('span').textContent = '';
-        placeholder.querySelector('svg').style.opacity = '0.3';
-      }
+      // Hide the entire gallery section until photos are added
+      const section = grid.closest('.gallery-section');
+      if (section) section.style.display = 'none';
       return;
     }
 
@@ -25,7 +23,9 @@ async function loadGallery() {
       </div>
     `).join('');
   } catch {
-    // Silently keep placeholder on error
+    // Hide on error too — don't show empty placeholder to visitors
+    const section = grid.closest('.gallery-section');
+    if (section) section.style.display = 'none';
   }
 }
 

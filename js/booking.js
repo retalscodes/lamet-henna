@@ -16,7 +16,8 @@ if (dateInput) {
   dateInput.addEventListener('change', onDateChange);
 }
 
-let slotsAbortController = null;
+// Call ID: only the latest call is allowed to render
+let currentSlotCall = 0;
 
 function onDateChange() {
   const d = new Date(dateInput.value);
@@ -42,18 +43,16 @@ function clearSlots() {
 }
 
 async function loadSlots(date) {
-  // Cancel any in-flight request
-  if (slotsAbortController) slotsAbortController.abort();
-  slotsAbortController = new AbortController();
-
+  const myCall = ++currentSlotCall; // stamp this call
   showSlotsMsg(i18n[currentLang].book_loading_slots);
   clearSlots();
 
   try {
-    const res = await fetch(`/.netlify/functions/get-slots?date=${date}`, {
-      signal: slotsAbortController.signal,
-    });
+    const res = await fetch(`/.netlify/functions/get-slots?date=${date}`);
     const { slots } = await res.json();
+
+    // If a newer call happened while we were fetching, throw away this result
+    if (myCall !== currentSlotCall) return;
 
     const grid = document.getElementById('slots-grid');
     const msg  = document.getElementById('slots-msg');
@@ -64,8 +63,7 @@ async function loadSlots(date) {
     }
 
     msg.style.display = 'none';
-    // Clear again just before rendering to be safe
-    grid.innerHTML = '';
+    grid.innerHTML = ''; // clear before rendering
     slots.forEach(slot => {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -79,8 +77,8 @@ async function loadSlots(date) {
       btn.addEventListener('click', () => selectSlot(btn, slot.time));
       grid.appendChild(btn);
     });
-  } catch (err) {
-    if (err.name === 'AbortError') return; // silently ignore cancelled requests
+  } catch {
+    if (myCall !== currentSlotCall) return;
     showSlotsMsg(i18n[currentLang].book_no_slots);
   }
 }

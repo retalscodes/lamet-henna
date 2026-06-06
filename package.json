@@ -1,0 +1,10 @@
+{
+  "name": "lamet-henna",
+  "version": "1.0.0",
+  "description": "Lamet Henna — Henna & Event Planning website",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@supabase/supabase-js": "^2.50.0"
+  }
+}

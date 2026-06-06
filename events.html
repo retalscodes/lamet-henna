@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تنظيم فعاليات | لمّة حنة</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html"><img src="assets/logo.png" alt="Lamet Henna" class="navbar-logo" onerror="this.style.display='none'"></a>
+      <ul class="navbar-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">الرئيسية</a></li>
+        <li><a href="index.html#services" data-i18n="nav_services">الخدمات</a></li>
+        <li><a href="booking.html" data-i18n="nav_book">احجزي موعد</a></li>
+        <li><a href="index.html#contact" data-i18n="nav_contact">تواصلي معنا</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="booking.html" class="book-nav-btn" data-i18n="nav_book">احجزي موعد</a>
+        <button class="lang-btn" id="lang-btn" data-i18n="lang_toggle">English</button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+      <span>›</span>
+      <span data-i18n="service_events">تنظيم فعاليات</span>
+    </div>
+    <h1 data-i18n="events_hero_title">تنظيم الفعاليات</h1>
+    <p data-i18n="events_hero_sub">نصنع اللحظات، نصنع الذكريات</p>
+  </header>
+
+  <section class="details-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px;">
+        <h2 class="section-title" data-i18n="events_what_title">نظّمي معنا</h2>
+      </div>
+      <div class="details-grid">
+        <div class="detail-card">
+          <div class="detail-num">٠١</div>
+          <h3 data-i18n="events_detail_1_title">حفلات الأفراح</h3>
+          <p data-i18n="events_detail_1">تنظيم وتنسيق كامل لليلة الأحلام</p>
+        </div>
+        <div class="detail-card">
+          <div class="detail-num">٠٢</div>
+          <h3 data-i18n="events_detail_2_title">ليالي الحنة (زفة)</h3>
+          <p data-i18n="events_detail_2">أجواء خليجية أصيلة لليلة حنة لا تُنسى</p>
+        </div>
+        <div class="detail-card">
+          <div class="detail-num">٠٣</div>
+          <h3 data-i18n="events_detail_3_title">حفلات التخرج</h3>
+          <p data-i18n="events_detail_3">احتفلي بنجاحك بأسلوب راقٍ ومميز</p>
+        </div>
+        <div class="detail-card">
+          <div class="detail-num">٠٤</div>
+          <h3 data-i18n="events_detail_4_title">تجمعات خاصة</h3>
+          <p data-i18n="events_detail_4">مجالس، برانشات، تجمعات عائلية وأكثر</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title" data-i18n="section_pricing">الأسعار</h2>
+      </div>
+      <div class="pricing-grid" id="pricing-grid">
+        <p style="color:var(--muted);text-align:center;padding:24px;grid-column:1/-1;" id="pricing-placeholder">⏳</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      <h2 class="section-title text-center" data-i18n="gallery_title">معرض الأعمال</h2>
+      <div class="gallery-grid" id="gallery-grid">
+        <div class="gallery-item" id="gallery-placeholder-item">
+          <div class="gallery-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>⏳</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-cta" style="margin-top:24px;">
+        <a href="https://www.instagram.com/lamet_henna" target="_blank" rel="noopener" class="btn-primary" data-i18n="gallery_instagram">شاهدي المزيد على إنستقرام</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:40px 0 80px; text-align:center;">
+    <a href="booking.html?service=events" class="btn-primary" data-i18n="book_service_cta">احجزي هذه الخدمة</a>
+  </section>
+
+  <script>
+    const SERVICE_PAGE = 'events';
+  </script>
+
+  <footer>
+    <p>© 2025 لمّة حنة | <a href="https://www.instagram.com/lamet_henna" target="_blank" rel="noopener">@lamet_henna</a></p>
+  </footer>
+
+  <div class="bot-widget" id="bot-widget">
+    <div class="bot-panel hidden" id="bot-panel">
+      <div class="bot-header">
+        <div class="bot-header-info"><div class="bot-avatar">🌿</div><div><h4 data-i18n="bot_title">مساعدة لمّة حنة</h4><p>Online</p></div></div>
+        <button class="bot-close" id="bot-close">✕</button>
+      </div>
+      <div class="bot-messages" id="bot-messages">
+        <div class="bot-msg bot" data-i18n="bot_greeting">أهلاً! أنا هنا لمساعدتك.</div>
+      </div>
+      <div class="bot-input-row">
+        <input class="bot-input" id="bot-input" type="text" data-i18n-placeholder="bot_placeholder" placeholder="اكتبي رسالتك...">
+        <button class="bot-send" id="bot-send"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="bot-fab" id="bot-fab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+    <div class="bot-tooltip" data-i18n="bot_tooltip">تحتاجين مساعدة؟</div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/service-page.js"></script>
+  <script src="js/bot.js"></script>
+</body>
+</html>

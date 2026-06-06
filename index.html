@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="لمّة حنة — خدمات الحنة وتنظيم الفعاليات في عمّان، الأردن | Lamet Henna — Henna & Event Planning in Amman, Jordan">
+  <title>لمّة حنة | Lamet Henna</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html">
+        <img src="assets/logo.png" alt="Lamet Henna" class="navbar-logo" id="navbar-logo"
+          onerror="this.style.display='none'; document.getElementById('navbar-text').style.display='block'">
+        <span id="navbar-text" style="display:none; font-size:1.1rem; font-weight:700; color:var(--wine);">لمّة حنة</span>
+      </a>
+      <ul class="navbar-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">الرئيسية</a></li>
+        <li><a href="#services" data-i18n="nav_services">الخدمات</a></li>
+        <li><a href="booking.html" data-i18n="nav_book">احجزي موعد</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">تواصلي معنا</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="booking.html" class="book-nav-btn" data-i18n="nav_book">احجزي موعد</a>
+        <button class="lang-btn" id="lang-btn" data-i18n="lang_toggle">English</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <!-- Henna pattern decorations -->
+    <svg class="hero-pattern-l henna-bg" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M200,50 C250,50 300,100 300,150 C300,200 250,250 200,250 C150,250 100,200 100,150 C100,100 150,50 200,50 Z M200,80 C233,80 270,110 270,150 C270,190 233,220 200,220 C167,220 130,190 130,150 C130,110 167,80 200,80 Z"/>
+      <path d="M50,300 Q100,200 200,250 Q300,300 350,200 Q400,100 350,50 Q450,150 380,280 Q310,410 200,380 Q90,350 50,300 Z" opacity="0.6"/>
+      <circle cx="200" cy="150" r="20"/>
+      <path d="M180,350 Q200,300 220,350 Q240,400 200,420 Q160,400 180,350 Z"/>
+      <path d="M100,450 Q150,380 200,450 Q250,520 300,450" fill="none" stroke="currentColor" stroke-width="8"/>
+      <circle cx="100" cy="500" r="15"/>
+      <circle cx="300" cy="500" r="15"/>
+    </svg>
+    <svg class="hero-pattern-r henna-bg" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M200,50 C250,50 300,100 300,150 C300,200 250,250 200,250 C150,250 100,200 100,150 C100,100 150,50 200,50 Z M200,80 C233,80 270,110 270,150 C270,190 233,220 200,220 C167,220 130,190 130,150 C130,110 167,80 200,80 Z"/>
+      <path d="M50,300 Q100,200 200,250 Q300,300 350,200 Q400,100 350,50 Q450,150 380,280 Q310,410 200,380 Q90,350 50,300 Z" opacity="0.6"/>
+      <circle cx="200" cy="150" r="20"/>
+      <path d="M180,350 Q200,300 220,350 Q240,400 200,420 Q160,400 180,350 Z"/>
+      <path d="M100,450 Q150,380 200,450 Q250,520 300,450" fill="none" stroke="currentColor" stroke-width="8"/>
+      <circle cx="100" cy="500" r="15"/>
+      <circle cx="300" cy="500" r="15"/>
+    </svg>
+
+    <div class="hero-content">
+      <img src="assets/logo.png" alt="Lamet Henna Logo" class="hero-logo"
+        onerror="this.style.display='none'">
+      <h1 class="hero-title" data-i18n="tagline">حيث تبدأ كل احتفالية بلمستنا ✨</h1>
+      <p class="hero-sub" data-i18n="tagline_sub">حنة | فعاليات | أفراح | ذكريات</p>
+      <div class="hero-btns">
+        <a href="booking.html" class="btn-primary" data-i18n="cta_book">احجزي موعدك</a>
+        <a href="#services" class="btn-secondary" data-i18n="cta_explore">تصفّحي خدماتنا</a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </header>
+
+  <!-- ── Services ── -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="text-center fade-up">
+        <h2 class="section-title" data-i18n="section_services">خدماتنا</h2>
+        <p class="section-sub" data-i18n="section_services_sub">اختاري ما يناسب مناسبتك</p>
+      </div>
+      <div class="services-grid">
+
+        <!-- Henna -->
+        <a href="henna.html" class="service-card fade-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4C20 4 14 8 12 14C10 20 12 26 16 30C18 32 20 36 20 40H28C28 36 30 32 32 30C36 26 38 20 36 14C34 8 28 4 24 4ZM24 8C27 8 31 11 32 15C33 20 31 24 28 27C26 29 24 33 24 36C24 33 22 29 20 27C17 24 15 20 16 15C17 11 21 8 24 8Z"/>
+              <rect x="18" y="40" width="12" height="4" rx="2"/>
+              <circle cx="24" cy="18" r="4"/>
+            </svg>
+          </div>
+          <h3 data-i18n="service_henna">حنة</h3>
+          <p data-i18n="service_henna_desc">رسومات حنة يدوية بأجمل التصاميم الخليجية والعربية لكل مناسبة</p>
+          <span class="service-link">
+            <span data-i18n="service_henna_detail">اكتشفي</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </a>
+
+        <!-- Events -->
+        <a href="events.html" class="service-card fade-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 16H40V40C40 42 38 44 36 44H12C10 44 8 42 8 40V16ZM8 10C8 8 10 6 12 6H16V4H20V6H28V4H32V6H36C38 6 40 8 40 10V16H8V10Z"/>
+              <rect x="14" y="22" width="6" height="5" rx="1"/>
+              <rect x="21" y="22" width="6" height="5" rx="1"/>
+              <rect x="28" y="22" width="6" height="5" rx="1"/>
+              <rect x="14" y="30" width="6" height="5" rx="1"/>
+              <rect x="21" y="30" width="6" height="5" rx="1"/>
+            </svg>
+          </div>
+          <h3 data-i18n="service_events">تنظيم فعاليات</h3>
+          <p data-i18n="service_events_desc">نظّمي حفل الأحلام معنا — أفراح، تخرجات، ليالي حنة وأكثر</p>
+          <span class="service-link">
+            <span data-i18n="service_events_detail">اكتشفي</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </a>
+
+        <!-- Sedr -->
+        <a href="sedr.html" class="service-card fade-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 6C20 6 14 10 12 16C12 22 16 26 16 30C16 34 14 38 14 42H22C22 38 24 34 24 30C24 34 26 38 26 42H34C34 38 32 34 32 30C32 26 36 22 36 16C34 10 28 6 24 6ZM24 10C27 10 30 13 31 17C31 21 28 25 28 29C27 26 25 23 24 20C23 23 21 26 20 29C20 25 17 21 17 17C18 13 21 10 24 10Z"/>
+              <path d="M10 20C8 22 8 26 10 28" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M38 20C40 22 40 26 38 28" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 data-i18n="service_sedr">سدر وحنة</h3>
+          <p data-i18n="service_sedr_desc">عنايـة طبيعية بشعرك بالسدر والحنة الطبيعية الخالصة</p>
+          <span class="service-link">
+            <span data-i18n="service_sedr_detail">اكتشفي</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </a>
+
+        <!-- Other -->
+        <a href="booking.html?service=other" class="service-card fade-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="3"/>
+              <circle cx="16" cy="24" r="3"/>
+              <circle cx="24" cy="24" r="3"/>
+              <circle cx="32" cy="24" r="3"/>
+            </svg>
+          </div>
+          <h3 data-i18n="service_other">خدمات أخرى</h3>
+          <p data-i18n="service_other_desc">لديكِ فكرة مختلفة؟ تواصلي معنا ونصمّم لكِ ما يناسبك</p>
+          <span class="service-link">
+            <span data-i18n="service_other_detail">تواصلي</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Divider ── -->
+  <div class="divider container">
+    <div class="divider-line"></div>
+    <span class="divider-motif">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- ── About ── -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text fade-up">
+          <h2 class="section-title" data-i18n="section_about">عن لمّة حنة</h2>
+          <p data-i18n="about_text">سندس قصّاص — فنانة حنة ومنظّمة فعاليات متخصصة في عمّان، الأردن. نؤمن أن كل لحظة تستحق لمسة مميزة.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num" data-i18n="about_stat_1">+٥٠٠</span>
+              <span class="stat-label" data-i18n="about_stat_1_label">عروس سعيدة</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-i18n="about_stat_2">+١٠٠٠</span>
+              <span class="stat-label" data-i18n="about_stat_2_label">مناسبة ناجحة</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-i18n="about_stat_3">١٩ألف</span>
+              <span class="stat-label" data-i18n="about_stat_3_label">متابعة على فيسبوك</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-hours fade-up">
+          <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="section_hours">أوقات العمل</span>
+          </h3>
+          <div class="hours-row">
+            <span class="hours-day" data-i18n="hours_sat_thu">السبت – الخميس</span>
+            <span class="hours-time" data-i18n="hours_sat_thu_time">١٠ صباحاً – ٥ مساءً</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day" data-i18n="hours_fri">الجمعة</span>
+            <span class="hours-time closed" data-i18n="hours_fri_time">مغلق</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="text-center fade-up">
+        <h2 class="section-title" data-i18n="section_contact">تواصلي معنا</h2>
+      </div>
+      <div class="contact-grid">
+        <a href="https://wa.me/962790932333" target="_blank" rel="noopener" class="contact-card fade-up">
+          <div class="contact-card-icon whatsapp">📱</div>
+          <h4 data-i18n="contact_whatsapp">واتساب</h4>
+          <p>0790932333</p>
+        </a>
+        <a href="https://www.instagram.com/lamet_henna" target="_blank" rel="noopener" class="contact-card fade-up">
+          <div class="contact-card-icon insta">📸</div>
+          <h4 data-i18n="contact_instagram">إنستقرام</h4>
+          <p>@lamet_henna</p>
+        </a>
+        <a href="https://www.facebook.com/Lamet-Henna" target="_blank" rel="noopener" class="contact-card fade-up">
+          <div class="contact-card-icon fb">💙</div>
+          <h4 data-i18n="contact_facebook">فيسبوك</h4>
+          <p>Lamet-Henna</p>
+        </a>
+        <div class="contact-card fade-up">
+          <div class="contact-card-icon location-ic">📍</div>
+          <h4 data-i18n="contact_location">عمّان، الأردن</h4>
+          <p>Amman, Jordan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>© 2025 لمّة حنة — Lamet Henna &nbsp;|&nbsp; Amman, Jordan &nbsp;|&nbsp;
+      <a href="https://www.instagram.com/lamet_henna" target="_blank" rel="noopener">@lamet_henna</a>
+    </p>
+  </footer>
+
+  <!-- ── AI Bot Widget ── -->
+  <div class="bot-widget" id="bot-widget">
+    <div class="bot-panel hidden" id="bot-panel">
+      <div class="bot-header">
+        <div class="bot-header-info">
+          <div class="bot-avatar">🌿</div>
+          <div>
+            <h4 data-i18n="bot_title">مساعدة لمّة حنة 🌿</h4>
+            <p>Online</p>
+          </div>
+        </div>
+        <button class="bot-close" id="bot-close" aria-label="Close">✕</button>
+      </div>
+      <div class="bot-messages" id="bot-messages">
+        <div class="bot-msg bot" id="bot-greeting" data-i18n="bot_greeting">
+          أهلاً! أنا هنا لمساعدتك. تودّين حجز موعد أو تعرّفين على خدماتنا؟
+        </div>
+      </div>
+      <div class="bot-input-row">
+        <input class="bot-input" id="bot-input" type="text" data-i18n-placeholder="bot_placeholder" placeholder="اكتبي رسالتك...">
+        <button class="bot-send" id="bot-send" aria-label="Send">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <button class="bot-fab" id="bot-fab" aria-label="Open chat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+    <div class="bot-tooltip" data-i18n="bot_tooltip">تحتاجين مساعدة؟</div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/bot.js"></script>
+</body>
+</html>

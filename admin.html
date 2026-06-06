@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم | لمّة حنة</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body class="admin-body">
+
+  <!-- Login Screen -->
+  <div class="admin-login-wrap" id="login-wrap">
+    <div class="admin-login-card">
+      <img src="assets/logo.png" alt="Lamet Henna" style="width:80px;margin:0 auto 20px;" onerror="this.style.display='none'">
+      <h2 data-i18n="admin_title">لوحة تحكم لمّة حنة</h2>
+      <p data-i18n="admin_login">تسجيل الدخول</p>
+      <div class="form-group" style="margin-top:24px;">
+        <label for="admin-pass" data-i18n="admin_password">كلمة المرور</label>
+        <input type="password" id="admin-pass" autocomplete="current-password">
+      </div>
+      <div class="admin-error hidden" id="login-error" data-i18n="admin_wrong_pass">كلمة مرور خاطئة</div>
+      <button class="submit-btn" id="login-btn" data-i18n="admin_login_btn" style="margin-top:16px;">دخول</button>
+      <div style="margin-top:16px;">
+        <button class="lang-btn" id="lang-btn" style="margin:0 auto;">English</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="admin-dashboard" id="admin-dashboard">
+    <div class="admin-header">
+      <h1 data-i18n="admin_title">لوحة تحكم لمّة حنة</h1>
+      <div class="admin-header-right">
+        <button class="lang-btn" id="lang-btn-dash" style="background:rgba(255,255,255,0.15);color:white;border-color:rgba(255,255,255,0.3);">English</button>
+        <button class="admin-logout-btn" id="logout-btn" data-i18n="admin_logout">خروج</button>
+      </div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="bookings" data-i18n="admin_bookings">الحجوزات</button>
+      <button class="admin-tab" data-tab="slots" data-i18n="admin_slots">إدارة المواعيد</button>
+      <button class="admin-tab" data-tab="gallery" data-i18n="admin_gallery">معرض الصور</button>
+      <button class="admin-tab" data-tab="pricing" data-i18n="admin_pricing">الأسعار</button>
+    </div>
+
+    <!-- Bookings Tab -->
+    <div class="admin-content" id="tab-bookings">
+      <div class="admin-filters">
+        <button class="filter-btn active" data-filter="all" data-i18n="admin_filter_all">الكل</button>
+        <button class="filter-btn" data-filter="pending" data-i18n="admin_filter_pending">قيد الانتظار</button>
+        <button class="filter-btn" data-filter="confirmed" data-i18n="admin_filter_confirmed">المؤكدة</button>
+        <button class="filter-btn" id="refresh-btn" data-i18n="admin_refresh" style="margin-right:auto;">تحديث</button>
+      </div>
+      <div id="bookings-list">
+        <p style="color:var(--muted);text-align:center;padding:40px;" data-i18n="admin_no_bookings">لا توجد حجوزات</p>
+      </div>
+    </div>
+
+    <!-- Gallery Tab -->
+    <div class="admin-content hidden" id="tab-gallery">
+      <div class="slots-manager">
+        <h3 data-i18n="admin_gallery_title">إضافة صور للمعرض</h3>
+
+        <div class="form-group">
+          <label for="gallery-service" data-i18n="admin_gallery_service">الخدمة</label>
+          <select id="gallery-service">
+            <option value="henna" data-i18n="service_henna">حنة</option>
+            <option value="events" data-i18n="service_events">تنظيم فعاليات</option>
+            <option value="sedr" data-i18n="service_sedr">سدر وحنة</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="admin_gallery_upload">رفع صورة</label>
+          <div class="upload-area" id="upload-area">
+            <input type="file" id="gallery-file" accept="image/*" multiple style="display:none">
+            <div class="upload-prompt" id="upload-prompt">
+              <span style="font-size:2rem;">📷</span>
+              <p data-i18n="admin_gallery_drop">اضغطي لاختيار صور أو اسحبيها هنا</p>
+              <p style="font-size:0.78rem;color:var(--muted);">JPG, PNG — حتى 5MB للصورة</p>
+            </div>
+            <div id="upload-previews" class="upload-previews"></div>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="upload-btn" data-i18n="admin_gallery_save">رفع الصور</button>
+        <p class="hidden" id="gallery-feedback" style="margin-top:12px;font-size:0.85rem;color:var(--wine);text-align:center;"></p>
+      </div>
+
+      <div class="slots-manager" style="margin-top:24px;">
+        <h3 data-i18n="admin_gallery_existing">الصور الحالية</h3>
+        <div class="form-group" style="margin-bottom:16px;">
+          <select id="gallery-view-service">
+            <option value="henna" data-i18n="service_henna">حنة</option>
+            <option value="events" data-i18n="service_events">تنظيم فعاليات</option>
+            <option value="sedr" data-i18n="service_sedr">سدر وحنة</option>
+          </select>
+        </div>
+        <div id="gallery-grid-admin" class="admin-gallery-grid"></div>
+      </div>
+    </div>
+
+    <!-- Pricing Tab -->
+    <div class="admin-content hidden" id="tab-pricing">
+      <div class="slots-manager">
+        <h3 data-i18n="admin_pricing_add">إضافة / تعديل سعر</h3>
+
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label for="price-service" data-i18n="admin_gallery_service">الخدمة</label>
+            <select id="price-service">
+              <option value="henna" data-i18n="service_henna">حنة</option>
+              <option value="events" data-i18n="service_events">تنظيم فعاليات</option>
+              <option value="sedr" data-i18n="service_sedr">سدر وحنة</option>
+              <option value="other" data-i18n="service_other">أخرى</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="price-amount" data-i18n="admin_price_amount">السعر (JD)</label>
+            <input type="number" id="price-amount" min="0" step="0.5" placeholder="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price-label" data-i18n="admin_price_label">اسم الباقة / الخدمة</label>
+          <input type="text" id="price-label" placeholder="مثال: حنة العروس الكاملة">
+        </div>
+
+        <div class="form-group">
+          <label for="price-desc" data-i18n="admin_price_desc">الوصف (اختياري)</label>
+          <input type="text" id="price-desc" placeholder="مثال: يشمل اليدين والقدمين بتصميم خليجي">
+        </div>
+
+        <input type="hidden" id="price-edit-id">
+        <button class="submit-btn" id="save-price-btn" data-i18n="admin_price_save">حفظ السعر</button>
+        <p class="hidden" id="pricing-feedback" style="margin-top:12px;font-size:0.85rem;color:var(--wine);text-align:center;"></p>
+      </div>
+
+      <div class="slots-manager" style="margin-top:24px;">
+        <h3 data-i18n="admin_pricing_list">قائمة الأسعار</h3>
+        <div class="form-group" style="margin-bottom:16px;">
+          <select id="pricing-view-service">
+            <option value="henna" data-i18n="service_henna">حنة</option>
+            <option value="events" data-i18n="service_events">تنظيم فعاليات</option>
+            <option value="sedr" data-i18n="service_sedr">سدر وحنة</option>
+            <option value="other" data-i18n="service_other">أخرى</option>
+          </select>
+        </div>
+        <div id="pricing-list-admin"></div>
+      </div>
+    </div>
+
+    <!-- Slots Tab -->
+    <div class="admin-content hidden" id="tab-slots">
+      <div class="slots-manager">
+        <h3 data-i18n="admin_add_slots">إضافة مواعيد متاحة</h3>
+
+        <div class="form-group">
+          <label for="slots-date" data-i18n="admin_select_date">اختاري التاريخ</label>
+          <input type="date" id="slots-date">
+        </div>
+
+        <p style="font-size:0.88rem;color:var(--muted);margin-bottom:12px;" data-i18n="admin_select_times">اختاري الأوقات المتاحة</p>
+        <div class="time-checkboxes" id="time-checkboxes">
+          <!-- Generated by JS -->
+        </div>
+
+        <button class="submit-btn" id="save-slots-btn" data-i18n="admin_save_slots">حفظ المواعيد</button>
+        <p class="hidden" id="slots-feedback" style="margin-top:12px;font-size:0.85rem;color:var(--wine);text-align:center;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

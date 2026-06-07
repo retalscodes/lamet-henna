@@ -133,6 +133,7 @@ const i18n = {
     sedr_detail_4: 'نحضر مستلزمات العناية إلى منزلكِ',
 
     // Bot
+    wa_label: 'تواصلي معنا',
     bot_tooltip: 'تحتاجين مساعدة؟',
     bot_title: 'مساعدة لمّة حنة 🌿',
     bot_greeting: 'أهلاً! أنا هنا لمساعدتك. تودّين حجز موعد أو تعرّفين على خدماتنا؟',
@@ -317,6 +318,7 @@ const i18n = {
     sedr_detail_4_title: 'Home Service',
     sedr_detail_4: 'We bring everything needed right to your door',
 
+    wa_label: 'Contact Us',
     bot_tooltip: 'Need help?',
     bot_title: 'Lamet Henna Assistant 🌿',
     bot_greeting: 'Hello! I\'m here to help. Would you like to book an appointment or learn about our services?',

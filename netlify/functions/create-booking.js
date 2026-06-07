@@ -50,8 +50,8 @@ exports.handler = async (event) => {
   }]);
 
   if (error) {
-    console.error('Supabase insert error:', error);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to save booking' }) };
+    console.error('Supabase insert error:', JSON.stringify(error));
+    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to save booking', detail: error.message, code: error.code }) };
   }
 
   return {

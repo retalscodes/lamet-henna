@@ -121,7 +121,10 @@ document.getElementById('booking-form')?.addEventListener('submit', async (e) =>
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) throw new Error();
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.detail || errData.error || `HTTP ${res.status}`);
+    }
 
     document.getElementById('booking-form').classList.add('hidden');
     document.getElementById('booking-success').classList.remove('hidden');
@@ -136,10 +139,10 @@ document.getElementById('booking-form')?.addEventListener('submit', async (e) =>
     const waLink = document.getElementById('success-whatsapp');
     if (waLink) waLink.href = `https://wa.me/962790932333?text=${waMsg}`;
 
-  } catch {
+  } catch(err) {
     btn.disabled = false;
     btn.textContent = i18n[currentLang].book_submit;
-    alert('حدث خطأ. الرجاء المحاولة مجدداً أو التواصل عبر واتساب.');
+    alert('حدث خطأ: ' + (err.message || 'الرجاء المحاولة مجدداً أو التواصل عبر واتساب.'));
   }
 });
 
